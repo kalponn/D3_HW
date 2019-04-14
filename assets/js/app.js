@@ -14,6 +14,8 @@ function makeResponsive() {
   // SVG wrapper dimensions are determined by the current width and height of the browser window.
   //var svgWidth = window.innerWidth;
   //var svgHeight = window.innerHeight;
+  //console.log(svgWidth * 2);
+  
   var svgWidth = 960;
   var svgHeight = 500;
   
@@ -107,16 +109,19 @@ function makeResponsive() {
                            '\n Lacks Healthcare : ' + d.healthcare + '%'})
 
 	 // Create the text for each circle */
-    /*     
-	 circles.append("text")
-			.attr("class", "stateText")
-            .attr("font-size", 7)
-            .attr("dx", d => xScale(d.poverty))
-            .attr("dy", d => yScale(d.healthcare))
-            .text(function(d) {
+        
+	var circletext = chartGroup.selectAll("text")
+	           .data(healthData)
+		       .enter()
+		       .append("text")
+			   .attr("class", "stateText")
+               .attr("font-size", 5)
+               .attr("dx", d => xScale(d.poverty))
+               .attr("dy", d => yScale(d.healthcare))
+               .text(function(d) {
                 return d.abbr;
-              })
-	*/
+                })
+	
 	
     // text label for the x axis
     chartGroup.append("text")
