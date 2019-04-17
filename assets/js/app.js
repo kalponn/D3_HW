@@ -86,7 +86,7 @@ function makeResponsive() {
       .append("circle")
       .attr("cx",d => xScale(d.poverty))
       .attr("cy",d => yScale(d.healthcare))
-      .attr("r",'10')
+      .attr("r",'15')
 	  .attr("class", "stateCircle")        
 
       .on('mouseover', function () {
@@ -100,7 +100,7 @@ function makeResponsive() {
         d3.select(this)
           .transition()
           .duration(500)
-          .attr('r',10)
+          .attr('r',15)
           .attr('stroke-width',1)
       })
       .append('title') // Tooltip
@@ -110,7 +110,7 @@ function makeResponsive() {
 
 	 // Create the text for each circle */
         
-	var circletext = chartGroup.selectAll("text")
+	var circletext = chartGroup.selectAll(".text")
 	           .data(healthData)
 		       .enter()
 		       .append("text")
@@ -118,9 +118,7 @@ function makeResponsive() {
                .attr("font-size", 5)
                .attr("dx", d => xScale(d.poverty))
                .attr("dy", d => yScale(d.healthcare))
-               .text(function(d) {
-                return d.abbr;
-                })
+               .text(d => d.abbr)
 	
 	
     // text label for the x axis
